@@ -18,11 +18,12 @@ int main()
 		printf("%s",line);
 		
 		for(int i = pointer;i>0;i--) printf(" ");
-		printf("^\n");
+		printf("^%i\n",pointer);
 		
 		if(current == '#') trees++;
+		
 		pointer += 3;
-		if(pointer > strlen(line)) break;
+		if(pointer > 30) pointer -= 31;
 	}
 	
 	printf("%i\n",trees);
