@@ -1,16 +1,14 @@
 with open('input.txt') as input:
-	cur = 0
-	max = 0
+	current = 0
+	topthree = list()
 	for line in input.readlines():
 		line = line.strip()
 		if line:
 			if line.isnumeric():
-				cur += int(line)
+				current += int(line)
 		else:
-			if max < cur:
-				max = cur
-			cur = 0
-	if max < cur:
-		max = cur
-
-print("final max: " + str(max))
+			topthree.append(current)
+			topthree.sort(reverse=True)
+			topthree = topthree[0:3]
+			current = 0
+print("final max: " + str((topthree[0] + topthree[1] + topthree[2])))
