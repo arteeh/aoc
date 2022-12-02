@@ -1,13 +1,13 @@
 ﻿namespace Elves
 {
-    class Program
-    {
-        enum Move
-        {
-            Rock,
-            Paper,
-            Scissors
-        }
+	class Program
+	{
+		enum Move
+		{
+			Rock,
+			Paper,
+			Scissors
+		}
 
 		enum Result
 		{
@@ -16,15 +16,15 @@
 			OpponentWin
 		}
 
-        static void Main()
-        {
-            string[] lines = File.ReadAllLines("input.txt");
+		static void Main()
+		{
+			string[] lines = File.ReadAllLines("input.txt");
 
 			uint totalPlayerScore = 0;
 
-            for (uint i = 0; i < lines.Length; i++)
-            {
-                (Move linePlayerMove, Move lineOpponentMove, Result lineDesiredResult) = Parse(lines[i]);
+			for (uint i = 0; i < lines.Length; i++)
+			{
+				(Move linePlayerMove, Move lineOpponentMove, Result lineDesiredResult) = Parse(lines[i]);
 
 				linePlayerMove = CalculateMove(lineOpponentMove, lineDesiredResult);
 
@@ -33,14 +33,14 @@
 				uint linePlayerScore = CalculatePlayerScore(linePlayerMove, lineMatchResult);
 
 				totalPlayerScore += linePlayerScore;
-            }
+			}
 
 			Console.WriteLine("Player total score: " + totalPlayerScore);
-        }
+		}
 
-        static (Move player, Move opponent, Result desired) Parse(string line)
-        {
-            Move player = Move.Rock;
+		static (Move player, Move opponent, Result desired) Parse(string line)
+		{
+			Move player = Move.Rock;
 			Move opponent = Move.Rock;
 			Result desired = Result.PlayerWin;
 
@@ -65,7 +65,7 @@
 			}
 
 			return (player, opponent, desired);
-        }
+		}
 
 		static Result CalculateMatchResult(Move player, Move opponent)
 		{
@@ -118,5 +118,5 @@
 
 			return score;
 		}
-    }
+	}
 }
